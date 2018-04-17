@@ -1,4 +1,4 @@
-.gradle
+Gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
@@ -24,3 +24,24 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+=======
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
