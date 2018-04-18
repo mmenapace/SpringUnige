@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.POJO.Accountant;
 import com.example.demo.POJO.Employee;
 import com.example.demo.POJO.EmployeeRepository;
+import com.example.demo.POJO.Welder;
 import com.example.demo.POJO.WorkgroupRepository;
 import com.example.demo.ServiceDemo.Service1;
 
@@ -34,6 +36,21 @@ public class REstFirst {
 	String hello() {
 		return "Hello World";
 	}
+	
+	@RequestMapping("addWelder")
+	void generateWelder() {
+		Welder emp = new Welder("Gino", "Franco", 29, "Via da li","010 585858", 120);
+		employeeRepository.save(emp);
+		
+	}
+	
+	@RequestMapping("addAccountant")
+	void generateAccountant() {
+		Accountant emp = new Accountant("Gino", "Franco", 29, "Via da li","010 585858", "Sala B");
+		employeeRepository.save(emp);
+		
+	}
+	
 	
 	@RequestMapping(value = "/post/employee",method = RequestMethod.POST)
 	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
@@ -94,5 +111,8 @@ public class REstFirst {
 	Optional<workGroup> GetFranchi() {
 		return workgroupRepository.findById(13l);
 	}
+	
+	
+	
 
 }

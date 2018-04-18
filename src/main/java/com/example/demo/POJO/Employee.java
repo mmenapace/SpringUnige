@@ -1,11 +1,16 @@
 package com.example.demo.POJO;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(length = 100)
 public class Employee {
 
 	@Id
@@ -21,6 +26,14 @@ public class Employee {
 	
 	
 	
+	public Employee(String name, String surname, int age, String adress, String telnumber) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.age = age;
+		this.adress = adress;
+		this.telnumber = telnumber;
+	}
 	public Employee(long id, String name, String surname, int age, String adress, String telnumber) {
 		super();
 		this.id = id;

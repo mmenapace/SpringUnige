@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.ManyToAny;
 
 import com.example.demo.POJO.Advisor;
 import com.example.demo.POJO.Employee;
@@ -18,7 +21,7 @@ public class workGroup {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
 	String name;
-	@OneToMany
+	@ManyToMany
 	List<Employee> elist;
 	
 	@OneToOne
