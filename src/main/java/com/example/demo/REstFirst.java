@@ -6,8 +6,12 @@ import java.util.Optional;
 import javax.sql.rowset.serial.SerialArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.POJO.Employee;
@@ -29,6 +33,19 @@ public class REstFirst {
 	@RequestMapping("")
 	String hello() {
 		return "Hello World";
+	}
+	
+	@RequestMapping(value = "/post/employee",method = RequestMethod.POST)
+	public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee){
+		employeeRepository.save(employee);
+		return new ResponseEntity<Employee>(employee,HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping("getbyId/{id}")
+	Optional<Employee> getallEmployee(@PathVariable long id) {
+		
+		return employeeRepository.findById(id);	
 	}
 	
 	@RequestMapping("addEmployee")
