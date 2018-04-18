@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+import com.example.demo.POJO.Advisor;
 import com.example.demo.POJO.Employee;
 
 @Entity
@@ -18,6 +20,10 @@ public class workGroup {
 	String name;
 	@OneToMany
 	List<Employee> elist;
+	
+	@OneToOne
+	Advisor advisor;
+
 	
 	public workGroup() {
 		super();
@@ -35,6 +41,17 @@ public class workGroup {
 		this.name = name;
 		this.elist = elist;
 	}
+	
+	
+	
+	public workGroup(long id, String name, List<Employee> elist, Advisor advisor) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.elist = elist;
+		this.advisor = advisor;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -52,6 +69,14 @@ public class workGroup {
 	}
 	public void setElist(List<Employee> elist) {
 		this.elist = elist;
+	}
+
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
 	}
 	
 	
