@@ -41,11 +41,24 @@ public class REstFirst {
 		return new ResponseEntity<Employee>(employee,HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/delete/employee",method = RequestMethod.DELETE)
+	public ResponseEntity<Employee> deleteEmployee(@RequestBody Employee employee){
+
+		employeeRepository.delete(employee);
+		return new ResponseEntity<Employee>(employee,HttpStatus.OK);
+	}
+	
 	
 	@RequestMapping("getbyId/{id}")
 	Optional<Employee> getallEmployee(@PathVariable long id) {
 		
 		return employeeRepository.findById(id);	
+	}
+	
+	@RequestMapping(value = "deletebyId/{id}", method = RequestMethod.DELETE)
+	ResponseEntity<?> deleteById(@PathVariable long id) {
+		employeeRepository.deleteById(id);
+		return ResponseEntity.ok().body("cancellazione effettuata");
 	}
 	
 	@RequestMapping("addEmployee")
