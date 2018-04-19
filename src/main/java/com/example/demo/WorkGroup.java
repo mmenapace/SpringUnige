@@ -16,7 +16,7 @@ import com.example.demo.POJO.Advisor;
 import com.example.demo.POJO.Employee;
 
 @Entity
-public class workGroup {
+public class WorkGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
@@ -28,17 +28,17 @@ public class workGroup {
 	Advisor advisor;
 
 	
-	public workGroup() {
+	public WorkGroup() {
 		super();
 	}
 	
-	public workGroup( String name, List<Employee> elist) {
+	public WorkGroup( String name, List<Employee> elist) {
 		super();
 		this.name = name;
 		this.elist = elist;
 	}
 	
-	public workGroup(long id, String name, List<Employee> elist) {
+	public WorkGroup(long id, String name, List<Employee> elist) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,7 +47,7 @@ public class workGroup {
 	
 	
 	
-	public workGroup(long id, String name, List<Employee> elist, Advisor advisor) {
+	public WorkGroup(long id, String name, List<Employee> elist, Advisor advisor) {
 		super();
 		this.id = id;
 		this.name = name;

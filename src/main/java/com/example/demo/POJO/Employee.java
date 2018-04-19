@@ -23,9 +23,7 @@ public class Employee {
 	String adress;
 	String telnumber;
 	
-	
-	
-	
+
 	public long getId() {
 		return id;
 	}
@@ -65,7 +63,7 @@ public class Employee {
 		this.age = age;
 		this.adress = adress;
 	}
-	/// 
+
 	public String getName() {
 		return name;
 	}

@@ -19,10 +19,10 @@ import com.example.demo.POJO.Employee;
 import com.example.demo.POJO.EmployeeRepository;
 import com.example.demo.POJO.Welder;
 import com.example.demo.POJO.WorkgroupRepository;
-import com.example.demo.ServiceDemo.Service1;
+import com.example.demo.ServiceDemo.ServiceTest;
 
 @RestController
-public class REstFirst {
+public class RestFirst {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	
@@ -30,7 +30,7 @@ public class REstFirst {
 	WorkgroupRepository workgroupRepository;
 	
 	@Autowired
-	Service1 service1;
+	ServiceTest service1;
 	
 	@RequestMapping("")
 	String hello() {
@@ -40,16 +40,16 @@ public class REstFirst {
 	@RequestMapping("addWelder")
 	void generateWelder() {
 		Welder emp = new Welder("Gino", "Franco", 29, "Via da li","010 585858", 120);
-		employeeRepository.save(emp);
-		
+		employeeRepository.save(emp);	
 	}
 	
 	@RequestMapping("addAccountant")
 	void generateAccountant() {
 		Accountant emp = new Accountant("Gino", "Franco", 29, "Via da li","010 585858", "Sala B");
 		employeeRepository.save(emp);
-		
 	}
+	
+	/// POST
 	
 	
 	@RequestMapping(value = "/post/employee",method = RequestMethod.POST)
@@ -57,6 +57,23 @@ public class REstFirst {
 		employeeRepository.save(employee);
 		return new ResponseEntity<Employee>(employee,HttpStatus.OK);
 	}
+	
+	/**
+	 * Metodo per la generazione di un nuovo gruppo di lavoro a partire da una lista di dipendenti
+	 * @param name
+	 * @return Responde entity con workgroup appena generato
+	 */
+	@RequestMapping(value ="createWG/{name}" ,method = RequestMethod.POST )
+	ResponseEntity<WorkGroup>CreateWG(@PathVariable String name ,@RequestBody List<Employee> list) {
+		
+		WorkGroup wg = new WorkGroup(name, list);
+		
+		return new ResponseEntity<>(wg,HttpStatus.OK);
+		
+	}
+	
+	
+	/// DELETE
 	
 	@RequestMapping(value = "/delete/employee",method = RequestMethod.DELETE)
 	public ResponseEntity<Employee> deleteEmployee(@RequestBody Employee employee){
@@ -99,18 +116,8 @@ public class REstFirst {
 	}
 	
 	
-	@RequestMapping("createWG/{name}")
-	String CreateWG(@PathVariable String name) {
-		service1.createNewGroup(name);
 	
-		return "Il workgroup " + name + " è stato creato";
-		
-	}
 	
-	@RequestMapping("getFranchi")
-	Optional<workGroup> GetFranchi() {
-		return workgroupRepository.findById(13l);
-	}
 	
 	
 	
