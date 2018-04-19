@@ -26,6 +26,12 @@ public class Employee {
 	
 	
 	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public Employee(String name, String surname, int age, String adress, String telnumber) {
 		super();
 		this.name = name;
